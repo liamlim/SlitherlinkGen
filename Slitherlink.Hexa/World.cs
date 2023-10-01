@@ -78,8 +78,6 @@ public class World<TCell, TEdge>
                 var cell = new Cell<TCell, TEdge>
                 {
                     Info = new TCell(),
-                    RowIndex = i,
-                    ColumnIndex = j,
                     NorthWestEdge = topLeft,
                     SouthEastEdge = bottomRight,
                     NorthEastEdge = topRight,
@@ -88,12 +86,12 @@ public class World<TCell, TEdge>
                     EastEdge = right
                 };
 
-                topLeft.CellOnRightSide = cell;
-                topRight.CellOnLeftSide = cell;
-                left.CellOnRightSide = cell;
-                right.CellOnLeftSide = cell;
-                bottomLeft.CellOnRightSide = cell;
-                bottomRight.CellOnLeftSide = cell;
+                topLeft.CellOnEast = cell;
+                topRight.CellOnWest = cell;
+                left.CellOnEast = cell;
+                right.CellOnWest = cell;
+                bottomLeft.CellOnEast = cell;
+                bottomRight.CellOnWest = cell;
 
                 row[j] = cell;
             }

@@ -8,7 +8,7 @@ public sealed class WorldTemplate : World<CellInfo, EdgeInfo>
         : base(setup.WorldSize)
     { }
 
-    private static void FixCellInfo(Cell<CellInfo, EdgeInfo>? cell)
+    private static void FixCellInfoAfterColorChange(Cell<CellInfo, EdgeInfo>? cell)
     {
         static int BoolToInt(bool value)
         {
@@ -47,12 +47,12 @@ public sealed class WorldTemplate : World<CellInfo, EdgeInfo>
         cell.WestEdge.Info.IsOnLoop = !cell.WestEdge.Info.IsOnLoop;
         cell.WestEdge.Info.IsOnLoop = !cell.WestEdge.Info.IsOnLoop;
 
-        FixCellInfo(cell.SouthWest);
-        FixCellInfo(cell.SouthEast);
-        FixCellInfo(cell.NorthWest);
-        FixCellInfo(cell.NorthEast);
-        FixCellInfo(cell.West);
-        FixCellInfo(cell.East);
+        FixCellInfoAfterColorChange(cell.GetCell(Direction.SouthWest));
+        FixCellInfoAfterColorChange(cell.GetCell(Direction.SouthEast));
+        FixCellInfoAfterColorChange(cell.GetCell(Direction.NorthWest));
+        FixCellInfoAfterColorChange(cell.GetCell(Direction.NorthEast));
+        FixCellInfoAfterColorChange(cell.GetCell(Direction.West));
+        FixCellInfoAfterColorChange(cell.GetCell(Direction.East));
     }
 
     public void SetColor(int rowIndex, int columnIndex, CellColor color)

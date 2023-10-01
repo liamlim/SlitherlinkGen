@@ -6,6 +6,6 @@ public sealed record Edge<TCell, TEdge>
 {
     public required TEdge Info { get; init; }
 
-    public Cell<TCell, TEdge>? CellOnLeftSide { get; internal set; }
-    public Cell<TCell, TEdge>? CellOnRightSide { get; internal set; }
+    public Cell<TCell, TEdge>? CellOnWest { get; internal set; }
+    public Cell<TCell, TEdge>? CellOnEast { get; internal set; }
 }

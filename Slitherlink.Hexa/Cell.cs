@@ -1,76 +1,63 @@
 ﻿namespace Slitherlink.Hexa;
 
+/// <summary>
+/// Hexagonal cell with properties which allow it to border with neighbour cells in exactly 6 directions (NW, NE, E, SE, SW, W).
+/// </summary>
 public sealed record Cell<TCell, TEdge>
     where TCell : new()
     where TEdge : new()
 {
+    /// <summary>
+    /// All additional information attached to the cell
+    /// </summary>
     public required TCell Info { get; init; }
 
-    public required int RowIndex { get; init; }
-    public required int ColumnIndex { get; init; }
-
-    private IEnumerable<Cell<TCell, TEdge>?> GetAllNeighboursInternal()
-    {
-        yield return NorthWest;
-        yield return NorthEast;
-        yield return SouthWest;
-        yield return SouthEast;
-        yield return West;
-        yield return East;
-    }
-
+    /// <summary>
+    /// Returns all edges in order NW -> NE -> E -> SE -> SW -> W
+    /// </summary>
     public IEnumerable<Edge<TCell, TEdge>> GetAllEdges()
     {
         yield return NorthWestEdge;
         yield return NorthEastEdge;
-        yield return SouthWestEdge;
-        yield return SouthEastEdge;
         yield return EastEdge;
+        yield return SouthEastEdge;
+        yield return SouthWestEdge;
         yield return WestEdge;
     }
 
-    public IEnumerable<Cell<TCell, TEdge>> GetAllNeighbourCells()
-    {
-
-        return GetAllNeighboursInternal().Where(x => x != null)!;
-    }
-
+    /// <summary>
+    /// Edge in NW direction (upper left)
+    /// </summary>
     public required Edge<TCell, TEdge> NorthWestEdge { get; init; }
-    public Cell<TCell, TEdge>? NorthWest
-    {
-        get => NorthWestEdge.CellOnLeftSide;
-    }
 
+    /// <summary>
+    /// Edge in NE direction (upper right)
+    /// </summary>
     public required Edge<TCell, TEdge> NorthEastEdge { get; init; }
-    public Cell<TCell, TEdge>? NorthEast
-    {
-        get => NorthEastEdge.CellOnRightSide;
-    }
 
+    /// <summary>
+    /// Edge in SW direction (lower left)
+    /// </summary>
     public required Edge<TCell, TEdge> SouthWestEdge { get; init; }
-    public Cell<TCell, TEdge>? SouthWest
-    {
-        get => SouthWestEdge.CellOnLeftSide;
-    }
 
+    /// <summary>
+    /// Edge in SE direction (lower right)
+    /// </summary>
     public required Edge<TCell, TEdge> SouthEastEdge { get; init; }
-    public Cell<TCell, TEdge>? SouthEast
-    {
-        get => SouthEastEdge.CellOnRightSide;
-    }
 
+    /// <summary>
+    /// Edge in W direction (left)
+    /// </summary>
     public required Edge<TCell, TEdge> WestEdge { get; init; }
-    public Cell<TCell, TEdge>? West
-    {
-        get => WestEdge.CellOnLeftSide;
-    }
 
+    /// <summary>
+    /// Edge in E direction (right)
+    /// </summary>
     public required Edge<TCell, TEdge> EastEdge { get; init; }
-    public Cell<TCell, TEdge>? East
-    {
-        get => EastEdge.CellOnRightSide;
-    }
 
+    /// <summary>
+    /// Gets the edge in the specified direction
+    /// </summary>
     public Edge<TCell, TEdge> GetEdge(Direction direction)
     {
         return direction switch
@@ -86,16 +73,19 @@ public sealed record Cell<TCell, TEdge>
         };
     }
 
+    /// <summary>
+    /// Gets the neighbouring cell in the specified direction
+    /// </summary>
     public Cell<TCell, TEdge>? GetCell(Direction direction)
     {
         return direction switch
         {
-            Direction.East => East,
-            Direction.West => West,
-            Direction.NorthEast => NorthEast,
-            Direction.NorthWest => NorthWest,
-            Direction.SouthEast => SouthEast,
-            Direction.SouthWest => SouthWest,
+            Direction.East => EastEdge.CellOnEast,
+            Direction.West => WestEdge.CellOnWest,
+            Direction.NorthEast => NorthEastEdge.CellOnEast,
+            Direction.NorthWest => NorthWestEdge.CellOnWest,
+            Direction.SouthEast => SouthEastEdge.CellOnEast,
+            Direction.SouthWest => SouthWestEdge.CellOnWest,
 
             _ => throw new NotSupportedException()
         };
