@@ -8,7 +8,7 @@ public sealed record Cell<TCell, TEdge>
     where TEdge : new()
 {
     /// <summary>
-    /// All additional information attached to the cell
+    /// All custom information attached to the cell
     /// </summary>
     public required TCell Info { get; init; }
 
