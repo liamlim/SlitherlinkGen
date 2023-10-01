@@ -80,12 +80,12 @@ public class World<TCell, TEdge>
                     Info = new TCell(),
                     RowIndex = i,
                     ColumnIndex = j,
-                    TopLeftEdge = topLeft,
-                    BottomRightEdge = bottomRight,
-                    TopRightEdge = topRight,
-                    BottomLeftEdge = bottomLeft,
-                    LeftEdge = left,
-                    RightEdge = right
+                    NorthWestEdge = topLeft,
+                    SouthEastEdge = bottomRight,
+                    NorthEastEdge = topRight,
+                    SouthWestEdge = bottomLeft,
+                    WestEdge = left,
+                    EastEdge = right
                 };
 
                 topLeft.CellOnRightSide = cell;

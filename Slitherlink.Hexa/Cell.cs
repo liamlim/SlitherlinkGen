@@ -9,39 +9,95 @@ public sealed record Cell<TCell, TEdge>
     public required int RowIndex { get; init; }
     public required int ColumnIndex { get; init; }
 
-    public required Edge<TCell, TEdge> TopLeftEdge { get; init; }
-    public Cell<TCell, TEdge>? TopLeft
+    private IEnumerable<Cell<TCell, TEdge>?> GetAllNeighboursInternal()
     {
-        get => TopLeftEdge.CellOnLeftSide;
+        yield return NorthWest;
+        yield return NorthEast;
+        yield return SouthWest;
+        yield return SouthEast;
+        yield return West;
+        yield return East;
     }
 
-    public required Edge<TCell, TEdge> TopRightEdge { get; init; }
-    public Cell<TCell, TEdge>? TopRight
+    public IEnumerable<Edge<TCell, TEdge>> GetAllEdges()
     {
-        get => TopRightEdge.CellOnRightSide;
+        yield return NorthWestEdge;
+        yield return NorthEastEdge;
+        yield return SouthWestEdge;
+        yield return SouthEastEdge;
+        yield return EastEdge;
+        yield return WestEdge;
     }
 
-    public required Edge<TCell, TEdge> BottomLeftEdge { get; init; }
-    public Cell<TCell, TEdge>? BottomLeft
+    public IEnumerable<Cell<TCell, TEdge>> GetAllNeighbourCells()
     {
-        get => BottomLeftEdge.CellOnLeftSide;
+
+        return GetAllNeighboursInternal().Where(x => x != null)!;
     }
 
-    public required Edge<TCell, TEdge> BottomRightEdge { get; init; }
-    public Cell<TCell, TEdge>? BottomRight
+    public required Edge<TCell, TEdge> NorthWestEdge { get; init; }
+    public Cell<TCell, TEdge>? NorthWest
     {
-        get => BottomRightEdge.CellOnRightSide;
+        get => NorthWestEdge.CellOnLeftSide;
     }
 
-    public required Edge<TCell, TEdge> LeftEdge { get; init; }
-    public Cell<TCell, TEdge>? Left
+    public required Edge<TCell, TEdge> NorthEastEdge { get; init; }
+    public Cell<TCell, TEdge>? NorthEast
     {
-        get => LeftEdge.CellOnLeftSide;
+        get => NorthEastEdge.CellOnRightSide;
     }
 
-    public required Edge<TCell, TEdge> RightEdge { get; init; }
-    public Cell<TCell, TEdge>? Right
+    public required Edge<TCell, TEdge> SouthWestEdge { get; init; }
+    public Cell<TCell, TEdge>? SouthWest
     {
-        get => RightEdge.CellOnRightSide;
+        get => SouthWestEdge.CellOnLeftSide;
+    }
+
+    public required Edge<TCell, TEdge> SouthEastEdge { get; init; }
+    public Cell<TCell, TEdge>? SouthEast
+    {
+        get => SouthEastEdge.CellOnRightSide;
+    }
+
+    public required Edge<TCell, TEdge> WestEdge { get; init; }
+    public Cell<TCell, TEdge>? West
+    {
+        get => WestEdge.CellOnLeftSide;
+    }
+
+    public required Edge<TCell, TEdge> EastEdge { get; init; }
+    public Cell<TCell, TEdge>? East
+    {
+        get => EastEdge.CellOnRightSide;
+    }
+
+    public Edge<TCell, TEdge> GetEdge(Direction direction)
+    {
+        return direction switch
+        {
+            Direction.East => EastEdge,
+            Direction.West => WestEdge,
+            Direction.NorthEast => NorthEastEdge,
+            Direction.NorthWest => NorthWestEdge,
+            Direction.SouthEast => SouthEastEdge,
+            Direction.SouthWest => SouthWestEdge,
+
+            _ => throw new NotSupportedException()
+        };
+    }
+
+    public Cell<TCell, TEdge>? GetCell(Direction direction)
+    {
+        return direction switch
+        {
+            Direction.East => East,
+            Direction.West => West,
+            Direction.NorthEast => NorthEast,
+            Direction.NorthWest => NorthWest,
+            Direction.SouthEast => SouthEast,
+            Direction.SouthWest => SouthWest,
+
+            _ => throw new NotSupportedException()
+        };
     }
 }
