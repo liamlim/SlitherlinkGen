@@ -1,8 +1,8 @@
 ﻿namespace Slitherlink.Hexa;
 
 public class World<TCell, TEdge>
-    where TCell : new()
-    where TEdge : new()
+    where TCell : notnull, new()
+    where TEdge : notnull, new()
 {
     // all fields in this block contain information about the world
     private readonly Cell<TCell, TEdge>[][] _cells;
@@ -70,30 +70,30 @@ public class World<TCell, TEdge>
             var row = _cells[i];
             for (int j = 0; j < row.Length; j++)
             {
-                var topLeft = _edgesToNorthEast[i][j];
-                var bottomRight = _edgesToNorthEast[i + 1][j];
-                var topRight = _edgesToSouthEast[i][j];
-                var bottomLeft = _edgesToSouthEast[i + 1][j];
-                var left = _verticalEdges[i][j];
-                var right = _verticalEdges[i][j + 1];
+                var northWest = _edgesToNorthEast[i][j];
+                var southEast = _edgesToNorthEast[i + 1][j];
+                var northEast = _edgesToSouthEast[i][j];
+                var southWest = _edgesToSouthEast[i + 1][j];
+                var west = _verticalEdges[i][j];
+                var east = _verticalEdges[i][j + 1];
 
                 var cell = new Cell<TCell, TEdge>
                 {
                     Info = new TCell(),
-                    NorthWestEdge = topLeft,
-                    SouthEastEdge = bottomRight,
-                    NorthEastEdge = topRight,
-                    SouthWestEdge = bottomLeft,
-                    WestEdge = left,
-                    EastEdge = right
+                    NorthWestEdge = northWest,
+                    SouthEastEdge = southEast,
+                    NorthEastEdge = northEast,
+                    SouthWestEdge = southWest,
+                    WestEdge = west,
+                    EastEdge = east
                 };
 
-                topLeft.CellOnEast = cell;
-                topRight.CellOnWest = cell;
-                left.CellOnEast = cell;
-                right.CellOnWest = cell;
-                bottomLeft.CellOnEast = cell;
-                bottomRight.CellOnWest = cell;
+                northWest.CellOnEast = cell;
+                northEast.CellOnWest = cell;
+                west.CellOnEast = cell;
+                east.CellOnWest = cell;
+                southWest.CellOnEast = cell;
+                southEast.CellOnWest = cell;
 
                 row[j] = cell;
             }

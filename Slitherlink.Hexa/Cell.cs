@@ -4,8 +4,8 @@
 /// Hexagonal cell with properties which allow it to border with neighbour cells in exactly 6 directions (NW, NE, E, SE, SW, W).
 /// </summary>
 public sealed record Cell<TCell, TEdge>
-    where TCell : new()
-    where TEdge : new()
+    where TCell : notnull, new()
+    where TEdge : notnull, new()
 {
     /// <summary>
     /// All custom information attached to the cell
@@ -89,5 +89,10 @@ public sealed record Cell<TCell, TEdge>
 
             _ => throw new NotSupportedException()
         };
+    }
+
+    public override string ToString()
+    {
+        return Info.ToString() ?? "";
     }
 }

@@ -1,12 +1,14 @@
-﻿namespace Slitherlink.Hexa;
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Slitherlink.Hexa;
 
 /// <summary>
 /// Edge between two hexagonal cells OR between a hexagonal cell and void in case if the edge lays on the border
 /// of the world.
 /// </summary>
 public sealed record Edge<TCell, TEdge>
-    where TCell : new()
-    where TEdge : new()
+    where TCell : notnull, new()
+    where TEdge : notnull, new()
 {
     /// <summary>
     /// All custom information attached to the edge
@@ -22,4 +24,9 @@ public sealed record Edge<TCell, TEdge>
     /// The bordering cell which is more eastern. It can be null if the edge lays on the eaternmost side of the world.
     /// </summary>
     public Cell<TCell, TEdge>? CellOnEast { get; internal set; }
+
+    public override string ToString()
+    {
+        return Info.ToString() ?? "";
+    }
 }
