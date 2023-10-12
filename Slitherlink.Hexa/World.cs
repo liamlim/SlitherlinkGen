@@ -105,9 +105,9 @@ public class World<TCell, TEdge>
     /// </summary>
     public World(int worldSize)
     {
-        if (worldSize < 0)
+        if (worldSize <= 0)
         {
-            throw new InvalidOperationException("World size can't be negative!");
+            throw new InvalidOperationException("World size need to be greater than 0");
         }
 
         WorldSize = worldSize;
