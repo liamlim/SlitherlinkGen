@@ -23,20 +23,20 @@ public class World<TCell, TEdge>
             _cells[i] = new Cell<TCell, TEdge>[firstLineCount + i];
             _cells[inverseI] = new Cell<TCell, TEdge>[firstLineCount + i];
             _edgesToNorthEast[i] = new Edge<TCell, TEdge>[firstLineCount + i];
-            _edgesToNorthEast[inverseI] = new Edge<TCell, TEdge>[firstLineCount + i];
+            _edgesToNorthEast[inverseI + 1] = new Edge<TCell, TEdge>[firstLineCount + i];
             _edgesToSouthEast[i] = new Edge<TCell, TEdge>[firstLineCount + i];
-            _edgesToSouthEast[inverseI] = new Edge<TCell, TEdge>[firstLineCount + i];
+            _edgesToSouthEast[inverseI + 1] = new Edge<TCell, TEdge>[firstLineCount + i];
             _verticalEdges[i] = new Edge<TCell, TEdge>[firstLineCount + i + 1];
             _verticalEdges[inverseI] = new Edge<TCell, TEdge>[firstLineCount + i + 1];
         }
 
         // now it's time to handle the special case - the middle line
-        _cells[firstLineCount] = new Cell<TCell, TEdge>[middleLineCount];
+        _cells[firstLineCount - 1] = new Cell<TCell, TEdge>[middleLineCount];
+        _edgesToNorthEast[firstLineCount - 1] = new Edge<TCell, TEdge>[middleLineCount];
+        _edgesToSouthEast[firstLineCount - 1] = new Edge<TCell, TEdge>[middleLineCount];
         _edgesToNorthEast[firstLineCount] = new Edge<TCell, TEdge>[middleLineCount];
         _edgesToSouthEast[firstLineCount] = new Edge<TCell, TEdge>[middleLineCount];
-        _edgesToNorthEast[firstLineCount + 1] = new Edge<TCell, TEdge>[middleLineCount];
-        _edgesToSouthEast[firstLineCount + 1] = new Edge<TCell, TEdge>[middleLineCount];
-        _verticalEdges[firstLineCount] = new Edge<TCell, TEdge>[middleLineCount + 1];
+        _verticalEdges[firstLineCount - 1] = new Edge<TCell, TEdge>[middleLineCount + 1];
     }
 
     // Creates instances of all objects representing edges
