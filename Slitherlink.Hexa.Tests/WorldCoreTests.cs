@@ -1,6 +1,6 @@
 namespace Slitherlink.Hexa.Tests;
 
-public class WorldTests
+public class WorldCoreTests
 {
     [Theory()]
     [InlineData(1)]
@@ -10,7 +10,8 @@ public class WorldTests
     {
         var world = new TestWorld(worldSize);
 
-        Assert.Equal(world.WorldSize, worldSize);
+        Assert.Equal(worldSize, world.WorldSize);
+        Assert.Equal(2 * worldSize - 1, world.TotalRowsCount);
     }
 
     [Theory()]

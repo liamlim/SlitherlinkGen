@@ -2,15 +2,17 @@
 
 public class TestCell
 {
-    private readonly Guid _id;
+    private static int _ctorCount = 0;
 
     public TestCell()
     {
-        _id = Guid.NewGuid();
+        Id = _ctorCount++;
     }
+
+    public int Id { get; }
 
     public override string ToString()
     {
-        return _id.ToString();
+        return $"C{Id}";
     }
 }

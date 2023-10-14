@@ -2,15 +2,17 @@
 
 public class TestEdge
 {
-    private readonly Guid _id;
+    private static int _ctorCount = 0;
 
     public TestEdge()
     {
-        _id = Guid.NewGuid();
+        Id = _ctorCount++;
     }
+
+    public int Id { get; }
 
     public override string ToString()
     {
-        return _id.ToString();
+        return $"E{Id}";
     }
 }
