@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace Slitherlink.Hexa;
+﻿namespace Slitherlink.Hexa;
 
 /// <summary>
 /// Edge between two hexagonal cells OR between a hexagonal cell and void in case if the edge lays on the border

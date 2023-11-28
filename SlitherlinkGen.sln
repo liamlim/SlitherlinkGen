@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slitherlink.Hexa", "Slither
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slitherlink.Gen", "Slitherlink.Gen\Slitherlink.Gen.csproj", "{C3557183-2B87-43EE-BD31-2F0BFB5773C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slitherlink.Hexa.Tests", "Slitherlink.Hexa.Tests\Slitherlink.Hexa.Tests.csproj", "{FEDD7A9C-C1DF-421B-AF76-A6B2BE729926}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slitherlink.Hexa.Tests", "Slitherlink.Hexa.Tests\Slitherlink.Hexa.Tests.csproj", "{FEDD7A9C-C1DF-421B-AF76-A6B2BE729926}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E4C3CD53-D070-4A7A-B525-2431D62E2863}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
