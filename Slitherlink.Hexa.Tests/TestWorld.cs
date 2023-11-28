@@ -1,10 +1,6 @@
 ﻿namespace Slitherlink.Hexa.Tests;
 
-public class TestWorld :
-    World<TestCell, TestEdge>
+public class TestWorld(int worldSize) :
+    World<TestCell, TestEdge>(worldSize)
 {
-    public TestWorld(int worldSize) 
-        : base(worldSize)
-    {
-    }
 }

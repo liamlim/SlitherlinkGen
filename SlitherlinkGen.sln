@@ -5,14 +5,14 @@ VisualStudioVersion = 17.7.33913.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slitherlink.Hexa", "Slitherlink.Hexa\Slitherlink.Hexa.csproj", "{F986A92F-2E59-4BB0-B041-142558493E1D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slitherlink.Gen", "Slitherlink.Gen\Slitherlink.Gen.csproj", "{C3557183-2B87-43EE-BD31-2F0BFB5773C5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Slitherlink.Hexa.Tests", "Slitherlink.Hexa.Tests\Slitherlink.Hexa.Tests.csproj", "{FEDD7A9C-C1DF-421B-AF76-A6B2BE729926}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E4C3CD53-D070-4A7A-B525-2431D62E2863}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Slitherlink.Core", "Slitherlink.Core\Slitherlink.Core.csproj", "{12596123-DBE3-4FF1-919D-6DF3B809767B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,14 +24,14 @@ Global
 		{F986A92F-2E59-4BB0-B041-142558493E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F986A92F-2E59-4BB0-B041-142558493E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F986A92F-2E59-4BB0-B041-142558493E1D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C3557183-2B87-43EE-BD31-2F0BFB5773C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3557183-2B87-43EE-BD31-2F0BFB5773C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3557183-2B87-43EE-BD31-2F0BFB5773C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3557183-2B87-43EE-BD31-2F0BFB5773C5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FEDD7A9C-C1DF-421B-AF76-A6B2BE729926}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FEDD7A9C-C1DF-421B-AF76-A6B2BE729926}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEDD7A9C-C1DF-421B-AF76-A6B2BE729926}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEDD7A9C-C1DF-421B-AF76-A6B2BE729926}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12596123-DBE3-4FF1-919D-6DF3B809767B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12596123-DBE3-4FF1-919D-6DF3B809767B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12596123-DBE3-4FF1-919D-6DF3B809767B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12596123-DBE3-4FF1-919D-6DF3B809767B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

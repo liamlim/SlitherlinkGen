@@ -1,10 +1,12 @@
-﻿namespace Slitherlink.Hexa;
+﻿using Slitherlink.Core;
+
+namespace Slitherlink.Hexa;
 
 /// <summary>
 /// Edge between two hexagonal cells OR between a hexagonal cell and void in case if the edge lays on the border
 /// of the world.
 /// </summary>
-public sealed record Edge<TCell, TEdge>
+public sealed record Edge<TCell, TEdge> : IHexaEdge
     where TCell : notnull, new()
     where TEdge : notnull, new()
 {
@@ -13,18 +15,11 @@ public sealed record Edge<TCell, TEdge>
     /// </summary>
     public required TEdge Info { get; init; }
 
-    /// <summary>
-    /// The bordering cell which is more western. It can be null if the edge lays on the westernmost side of the world.
-    /// </summary>
-    public Cell<TCell, TEdge>? CellOnWest { get; internal set; }
-
-    /// <summary>
-    /// The bordering cell which is more eastern. It can be null if the edge lays on the eaternmost side of the world.
-    /// </summary>
-    public Cell<TCell, TEdge>? CellOnEast { get; internal set; }
-
     public override string ToString()
     {
         return Info.ToString() ?? "";
     }
+
+    public IHexaCell? CellOnWest { get; internal set; }
+    public IHexaCell? CellOnEast { get; internal set; }
 }

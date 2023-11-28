@@ -1,4 +1,4 @@
-﻿namespace Slitherlink.Hexa;
+﻿namespace Slitherlink.Core;
 
 /// <summary>
 /// Standardized enum for describing one of 6 hex directions which describe all possible
